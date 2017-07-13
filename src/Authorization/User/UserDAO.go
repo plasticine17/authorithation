@@ -5,9 +5,9 @@ import (
 )
 
 const (
-	modelTable = "auth.users"
+	modelTable = "main.users"
 
-	modelColums = "identifier, login, email, pass, namealias, regID"
+	modelColums = "identifier, login, email, password_hash, name_alias, registration_id"
 
 	insertSQL = "INSERT INTO " + modelTable + " (" + modelColums + ") VALUES ($1, $2, $3, $4, $5, $6)"
 
@@ -15,8 +15,10 @@ const (
 
 	selectUserByLoginSQL = "SELECT " + modelColums + " FROM " + modelTable + " WHERE login = $1"
 
-	existsLoginValidationSQL = "SELECT EXISTS(SELECT 1 FROM " + modelTable + " WHERE email = $1)"
+	existsLoginValidationSQL = "SELECT EXISTS(SELECT 1 FROM " + modelTable + " WHERE login = $1)"
 )
+
+
 
 func (u Model) Insert(database *sql.DB) error {
 	var _, err = database.Exec(insertSQL, u.ID.String(), u.Login, u.Email, string(u.PasswordHash), u.NameAlias, u.RegistrationID)

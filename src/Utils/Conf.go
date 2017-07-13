@@ -3,9 +3,9 @@ package Utils
 
 
 const (
-	DatabaseUser     = "productuser"
-	DatabasePassword = "2142"
-	DatabaseName     = "products"
+	DatabaseUser     = "postgres"
+	DatabasePassword = "1A18p20t7e14m!@"
+	DatabaseName     = "Auth"
 	DriverName       = "postgres"
 	
 	Gmail_account          string = "foodlerauthorization@gmail.com"
